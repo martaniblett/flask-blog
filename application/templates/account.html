@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
 
 {% block body_content %}
-<h1>Register Page</h1>
-<p>Register an account with this app</p>
+<h1>Account Page</h1>
+<h2>Hello {{ current_user.first_name }}</h2>
+<p>Display and/or make changes to your account</p>
     <div class='form'>
         <form method='POST' action=''>
             {{ form.hidden_tag() }}
@@ -15,11 +16,9 @@
                             <span>{{ error }}</span>
                         {% endfor %}
                     <div>
-                        <br>
                 {% endif %}
-            </div>
-            <br>
-            
+                <br>
+                <br>
             <div class='form_group'>
                 {{ form.last_name.label }}
                 {{ form.last_name }}
@@ -29,10 +28,12 @@
                             <span>{{ error }}</span>
                         {% endfor %}
                     <div>
-                        <br>
+                        <div>
+
+                        </div>
                 {% endif %}
-            </div>
-            <br>
+                <br>
+                <br>
             <div class='form_group'>
                 {{ form.email.label }}
                 {{ form.email }}
@@ -45,35 +46,17 @@
                 {% endif %}
             </div>
             <br>
-            <div class='form_group'>
-                {{ form.password.label }}
-                {{ form.password }}
-                {% if form.password.errors %}
-                    <div class='error'>
-                        {% for error in form.password.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
             <br>
-            <div class='form_group'>
-                {{ form.confirm_password.label }}
-                {{ form.confirm_password }}
-                {% if form.confirm_password.errors %}
-                    <div class='error'>
-                        {% for error in form.confirm_password.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
-            <br>
-            <!--Password and Check Password fields-->
-            <br>
-            <div class='form_group'>
-                {{ form.submit }}
+           
+            {{ form.submit }}
             </div>
         </form>
     </div>
+
+        <form action="{{ url_for('account_delete') }}">
+        <button type="submit">Delete your account</button>
+            
+            
+        </form>
+
 {% endblock %}

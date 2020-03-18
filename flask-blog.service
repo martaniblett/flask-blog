@@ -5,7 +5,7 @@ User=pythonadm
 WorkingDirectory=/opt/flask-blog
 ExecStart=/bin/bash \
 	-c 'cd /opt/flask-blog && \
-	source ./venv/bin/activate && \
+	. ./venv/bin/activate && \
 	python ./app.py'
 Environment=SECRET_KEY={{SECRET_KEY}}
 Environment=DATABASE_URI={{DATABASE_URI}}
